@@ -2,8 +2,8 @@ const header = document.getElementById('header');
 
 if (header) {
 	header.innerHTML += `
-    <a class="header-link" href="./">Home</a>
-    <a class="header-link" href="./pages/news">News</a>
+    <a class="header-link" href="/Colour/">Home</a>
+    <a class="header-link" href="/Colour/pages/news">News</a>
     <div id="menu" class="header-link">
         Socials
     
@@ -15,7 +15,7 @@ if (header) {
         <li><a href="https://colourtheoneandonly.bandcamp.com/album/colour" target="_blank">Bandcamp</a></li>
         </div>
     </div>
-    <a class="header-link" href="./pages/colour#contact">Contact</a>
+    <a class="header-link" href="/Colour/pages/colour#contact">Contact</a>
 `;
 }
 
