@@ -4,14 +4,58 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Colourfest</title>
+		<title>Colour</title>
 
 		<link href="../../styles/main.css" rel="stylesheet" />
-		<link href="../../styles/home.css" rel="stylesheet" />
+		<link href="../../styles/colourfest.css" rel="stylesheet" />
 
-		<script src="../../models/header.js" defer module></script>
+		<script src="../../models/header.js" defer></script>
+		<script src="../../models/background.js" defer></script>
 	</head>
 	<body>
-		<header></header>
+		<canvas id="stars"></canvas>
+
+		<header id="header"></header>
+
+		<div class="header-page">
+			<center>
+				<img src="../../assets/colourfest_logo.svg" class="banner" />
+
+				<img src="../../assets/gigs/colourfestSummer2023.png" class="banner" />
+
+				<h1>Lineup</h1>
+
+				<div class="grid-container">
+					<div class="grid-item">
+						<a href="/pages/colour" target="_blank"><h1>Colour</h1></a>
+
+						<iframe class="video" src="https://www.youtube.com/embed/9WpBiLt4MHw"> </iframe>
+					</div>
+
+					<div class="grid-item">
+						<a href="https://vi.be/platform/polymelia" target="_blank"><h1>Polymelia</h1></a>
+
+						<iframe src="https://www.youtube.com/embed/mAeqtjacxUs" class="video"></iframe>
+					</div>
+
+					<div class="grid-item">
+						<a href="https://vi.be/platform/elreys" target="_blank"><h1>Elreys</h1></a>
+
+						<iframe src="https://www.youtube.com/embed/xi9p3aPbD6E" class="video"></iframe>
+					</div>
+					<div class="grid-item">
+						<a href="https://www.facebook.com/voyageforknowledge" target="_blank"><h1>Voyage for Knowledge</h1></a>
+
+						<iframe src="https://www.youtube.com/embed/tu38SlLbxBw" class="video"></iframe>
+					</div>
+
+					<div class="grid-item">
+						<a href="#" target="_blank"><h1>DJ VogelenpikkenindeParochiezaalmetDeBejaardenbondvandeCD&V</h1></a>
+
+						<img src="../../assets/thumbnails/DJ.png" class="poster" />
+					</div>
+				</div>
+			</center>
+		</div>
 	</body>
 </html>

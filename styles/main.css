@@ -1,36 +1,65 @@
-body {
-	background-color: rgba(0, 0, 0, 0.3);
+body,
+html {
 	margin: 0;
+	padding: 0;
+	color: white;
+	font-family: OCR A Std, monospace;
+}
+
+main {
+	position: relative;
+}
+
+#stars {
+	position: fixed;
 }
 
 .header-link {
 	height: inherit;
 	width: inherit;
+	color: yellow;
 	text-align: center;
-}
-
-.header-button {
-	border: none;
-	background-color: inherit;
-	border-radius: 0.25rem;
+	padding: 15px;
 }
 
 .header-link:hover {
 	background-color: rgba(0, 0, 0, 0.1);
+	color: purple;
 }
 
 .banner {
-	position: fixed;
-	top: 6vh;
+	position: relative;
+	width: 130vh;
+}
+
+.hidden {
+	visibility: hidden;
 }
 
 #header {
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(122, 64, 207, 0.8);
+	box-shadow: 0px 1.5px rgba(255, 255, 255, 0.2);
 	height: 5vh;
 	width: 100vw;
 	display: flex;
 	flex-direction: row;
 	position: fixed;
+	z-index: 1000000000;
+}
+
+#options {
+	background-color: rgba(122, 64, 207, 0.8);
+	border-radius: 0.5rem;
+	position: relative;
+	top: 3vh;
+	text-align: left;
+	padding: 15px;
+}
+
+.header-page {
+	padding: 10px;
+	position: relative;
+	top: 6vh;
 }
 
 link {

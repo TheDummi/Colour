@@ -8,22 +8,27 @@
 		<link href="./styles/main.css" rel="stylesheet" />
 		<link href="./styles/home.css" rel="stylesheet" />
 
-		<script src="./models/header.js" defer module></script>
+		<script src="./models/header.js" defer></script>
+		<script src="./models/background.js" defer></script>
 
 		<title>Colour</title>
 	</head>
 	<body>
-		<header id="header"></header>
-		<center>
-			<main class="main">
-				<div class="colour">
-					<a href="./pages/colour"><img class="banner" src="./assets/colour_logo.svg" /></a>
-				</div>
-				<div class="navigator"><h1>Where would you like to go?</h1></div>
-				<div class="colourfest">
-					<a href="./pages/colourfest"><img src="./assets/colourfest_logo.svg" /></a>
-				</div>
-			</main>
-		</center>
+		<canvas id="stars"></canvas>
+		<main>
+			<header id="header"></header>
+
+			<div class="header-page">
+				<center>
+					<div id="colour">
+						<a href="./pages/colour"><img class="banner" src="./assets/colour_logo.svg" /></a>
+					</div>
+					<div class="navigator"><h1>Where would you like to go?</h1></div>
+					<div id="colourfest">
+						<a href="./pages/colourfest"><img class="banner" src="./assets/colourfest_logo.svg" /></a>
+					</div>
+				</center>
+			</div>
+		</main>
 	</body>
 </html>

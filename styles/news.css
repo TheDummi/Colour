@@ -1,0 +1,46 @@
+.grid-container {
+	position: relative;
+	top: 10vh;
+	display: inline-grid;
+	grid-template-columns: 1 auto;
+	gap: 10px;
+}
+
+.grid-item {
+	height: auto;
+	width: 80vw;
+	box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+	border-radius: 0.5rem;
+	background-color: rgba(255, 255, 255, 0.1);
+	padding: 20px;
+	text-align: left;
+}
+
+.grid-item:hover {
+	border: 2px solid;
+	border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+	animation: 10s rotate linear infinite;
+}
+
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
+}
+
+@property --angle {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false;
+}
+
+.poster {
+	width: 80vw;
+}
+
+.video {
+	width: 80vw;
+	height: 70vh;
+	border: none;
+	border-radius: 0.5rem;
+}
