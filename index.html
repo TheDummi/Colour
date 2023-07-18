@@ -6,7 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link href="./styles/main.css" rel="stylesheet" />
-		<link href="./styles/home.css" rel="stylesheet" />
+
+		<style>
+			body {
+				overflow-x: hidden;
+			}
+		</style>
 
 		<script src="./models/header.js" defer></script>
 		<script src="./models/background.js" defer></script>
@@ -14,21 +19,38 @@
 		<title>Colour</title>
 	</head>
 	<body>
-		<canvas id="stars"></canvas>
-		<main>
-			<header id="header"></header>
+		<!-- Background Section -->
+		<section id="background">
+			<canvas id="stars"></canvas>
+		</section>
 
-			<div class="header-page">
+		<!-- Header Section -->
+		<section>
+			<header id="header"></header>
+		</section>
+
+		<!-- Hero Section -->
+		<section id="hero">
+			<div>
+				<h1>Where would you like to go?</h1>
+			</div>
+		</section>
+
+		<!-- Main Section -->
+		<section id="main">
+			<main>
 				<center>
 					<div id="colour">
-						<a href="./pages/colour"><img class="banner" src="./assets/colour_logo.svg" /></a>
+						<a href="./pages/colour"><img class="navigator" src="./assets/colour_logo.svg" /></a>
 					</div>
-					<div class="navigator"><h1>Where would you like to go?</h1></div>
+					<div id="green">
+						<a href="./pages/green"><img class="navigator" src="./assets/green_logo.svg" /></a>
+					</div>
 					<div id="colourfest">
-						<a href="./pages/colourfest"><img class="banner" src="./assets/colourfest_logo.svg" /></a>
+						<a href="./pages/colourfest"><img class="navigator" src="./assets/colourfest_logo.svg" /></a>
 					</div>
 				</center>
-			</div>
-		</main>
+			</main>
+		</section>
 	</body>
 </html>

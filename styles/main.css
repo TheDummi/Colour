@@ -1,4 +1,12 @@
+/*--------------------------------------------------------------
+# Imports
+--------------------------------------------------------------*/
+
 @import url('https://fonts.cdnfonts.com/css/ocr-a-std');
+
+/*--------------------------------------------------------------
+# Page config
+--------------------------------------------------------------*/
 
 body,
 html {
@@ -8,79 +16,205 @@ html {
 	font-family: OCR A Std, monospace;
 }
 
-main {
-	position: relative;
-}
+/*--------------------------------------------------------------
+# Background
+--------------------------------------------------------------*/
 
 #stars {
 	position: fixed;
 }
 
+/*--------------------------------------------------------------
+# Scrollbar
+--------------------------------------------------------------*/
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(90deg, rgba(122, 64, 207, 0.8), rgba(000, 255, 000, 0.8));
+	background-size: 200% 200%;
+	animation: gradient 5s ease infinite;
+	border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #7a40cf;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+#header {
+	background: linear-gradient(90deg, rgba(122, 64, 207, 0.8), rgba(000, 255, 000, 0.8));
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+	box-shadow: 0px 1.5px rgba(255, 255, 255, 0.2);
+	height: 5vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	position: fixed;
+	z-index: 1000000000;
+}
+
 .header-link {
 	height: inherit;
 	width: inherit;
-	color: yellow;
+	color: black;
 	text-align: center;
-	padding: 15px;
+	padding: 1.5vh;
 }
 
 .header-link:hover {
 	background-color: rgba(0, 0, 0, 0.1);
-	color: purple;
+	color: #7a40cf;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/*--------------------------------------------------------------
+# Hero
+--------------------------------------------------------------*/
+
+#hero {
+	display: flex;
+	position: relative;
+	top: 7vh;
+	justify-content: center;
+	text-align: center;
+	padding: 15px;
+	animation: fadeFromTop 1.5s ease-in;
 }
 
 .banner {
+	position: absolute;
+	width: 60vw;
+	height: 40vh;
+}
+
+@keyframes fadeFromTop {
+	from {
+		top: -1000px;
+	}
+	to {
+		top: 0;
+	}
+}
+
+/*--------------------------------------------------------------
+# Navigator
+--------------------------------------------------------------*/
+
+.navigator {
 	position: relative;
 	width: 90vw;
+	height: 40vh;
+	transition: 1s;
+	padding-top: 15px;
+}
+
+.navigator:hover {
+	transform: scaleY(1.5);
+	transform: scaleX(1.5);
+}
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+
+.component {
+	margin: 10px;
+	position: relative;
+	top: 40vh;
+	background-color: rgba(255, 255, 255, 0.2);
+	width: 90vw;
+	border-radius: 0.5rem;
+	text-align: left;
+	padding: 5px;
+	overflow-x: auto;
+}
+
+/*--------------------------------------------------------------
+# Grids
+--------------------------------------------------------------*/
+
+.grid-container {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	height: 60vh;
+}
+
+.grid-item {
+	height: 40vh;
+	width: 40vw;
+	margin: 5px;
+}
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+main {
+	padding: 15px;
+	position: relative;
+	margin: 15px;
+	animation: fadeFromBottom 1.5s ease-in;
+}
+
+@keyframes fadeFromBottom {
+	from {
+		bottom: -1000px;
+	}
+	to {
+		bottom: 0;
+	}
+}
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+.video {
+	height: 55vh;
+	width: 40vw;
+	margin: 5px;
+	border-radius: 0.5rem;
+	border: none;
 }
 
 .hidden {
 	visibility: hidden;
 }
 
-#header {
-	background-color: rgba(122, 64, 207, 0.8);
-	box-shadow: 0px 1.5px rgba(255, 255, 255, 0.2);
-	height: 5vh;
-	width: 100vw;
-	display: flex;
-	flex-direction: row;
-	position: fixed;
-	z-index: 1000000000;
-}
-
-#options {
-	background-color: rgba(122, 64, 207, 0.8);
-	border-radius: 0.5rem;
-	position: relative;
-	top: 3vh;
-	text-align: left;
-	padding: 15px;
-}
-
-.header-page {
-	padding: 10px;
-	position: relative;
-	top: 6vh;
-}
-
-link {
+link,
+a {
 	text-decoration: none;
 }
 
-h1 {
-	color: purple;
+h1,
+a:hover {
+	color: #7a40cf;
 }
 
 h2 {
 	color: green;
-}
-
-a {
-	text-decoration: none;
-	color: yellow;
-}
-
-a:hover {
-	color: purple;
 }

@@ -24,10 +24,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	const options = document.getElementById('options');
 
 	if (menu) {
-		menu.addEventListener('click', (event) => {
-			const state = options.classList.contains('hidden');
-			if (state) options.classList.remove('hidden');
-			else options.classList.add('hidden');
+		document.addEventListener('click', (event) => {
+			if (event.target.id === 'menu') {
+				const state = options.classList.contains('hidden');
+				if (state) options.classList.remove('hidden');
+				else options.classList.add('hidden');
+			}
 		});
-	}
+	} else options.classList.add('hidden');
 });
