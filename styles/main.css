@@ -142,9 +142,8 @@ html {
 .component {
 	margin: 10px;
 	position: relative;
-	top: 40vh;
+	top: 45vh;
 	background-color: rgba(255, 255, 255, 0.2);
-	width: 90vw;
 	border-radius: 0.5rem;
 	text-align: left;
 	padding: 5px;
@@ -159,12 +158,9 @@ html {
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	height: 60vh;
 }
 
 .grid-item {
-	height: 40vh;
-	width: 40vw;
 	margin: 5px;
 }
 
@@ -193,8 +189,6 @@ main {
 --------------------------------------------------------------*/
 
 .video {
-	height: 55vh;
-	width: 40vw;
 	margin: 5px;
 	border-radius: 0.5rem;
 	border: none;
