@@ -1,9 +1,11 @@
+/** @format */
+
 const header = document.getElementById('header');
 
 if (header) {
 	header.innerHTML += `
-    <a class="header-link" href="/Colour/">Home</a>
-    <a class="header-link" href="/Colour/pages/news">News</a>
+    <a class="header-link" href="/">Home</a>
+    <a class="header-link" href="./pages/news.html">News</a>
     <div id="menu" class="header-link">
         Socials
     
