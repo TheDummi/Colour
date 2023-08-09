@@ -1,6 +1,10 @@
-/*--------------------------------------------------------------
-# Imports
---------------------------------------------------------------*/
+/**
+ * --------------------------------------------------------------
+ * # Imports
+ * --------------------------------------------------------------
+ *
+ * @format
+ */
 
 @import url('https://fonts.cdnfonts.com/css/ocr-a-std');
 
@@ -30,6 +34,7 @@ html {
 
 ::-webkit-scrollbar {
 	width: 10px;
+	background-color: black;
 }
 
 ::-webkit-scrollbar-track {
@@ -37,14 +42,13 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(90deg, rgba(122, 64, 207, 0.8), rgba(000, 255, 000, 0.8));
+	background: linear-gradient(180deg, rgba(122, 64, 207, 0.8), rgba(000, 200, 000, 0.8), rgba(122, 64, 207, 0.8));
 	background-size: 200% 200%;
-	animation: gradient 5s ease infinite;
 	border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #7a40cf;
+	background: linear-gradient(180deg, rgba(122, 64, 207, 0.8), rgba(000, 200, 000, 0.8), rgba(122, 64, 207, 0.8));
 }
 
 /*--------------------------------------------------------------
@@ -52,9 +56,9 @@ html {
 --------------------------------------------------------------*/
 
 #header {
-	background: linear-gradient(90deg, rgba(122, 64, 207, 0.8), rgba(000, 255, 000, 0.8));
+	background: linear-gradient(-90deg, rgba(122, 64, 207, 0.8), rgba(000, 200, 000, 0.8), rgba(122, 64, 207, 0.8));
 	background-size: 400% 400%;
-	animation: gradient 5s ease infinite;
+	animation: gradient 15s linear infinite;
 	box-shadow: 0px 1.5px rgba(255, 255, 255, 0.2);
 	height: 5vh;
 	width: 100vw;
