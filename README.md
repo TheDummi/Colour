@@ -1,58 +1,36 @@
-<!-- @format -->
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-# Colour
+## Getting Started
 
-A website for the band Colour.
+First, run the development server:
 
-## TO-DO
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
--   [x] Green Logo
--   [ ] Green page
--   [x] Navbar => linear
--   [ ] selectmenus => click to close
--   [x] colourfest > green
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Colour
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
--   [ ] Concerts
--   [ ] Albums & EP's => Recordings
--   [ ] Recordings => Videos
--   [ ] About page (Colour en Green)
--   [ ] Socials op band pagina
--   [ ] Contacts page
--   [ ] Ruimteschip (UFO) met banner About Us
--   [ ] Rainbow borders
--   [ ] About page voor albums
--   [ ] Hover info op albums (met achtergrond album art)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Green
+## Learn More
 
--   [ ] Ruimteschip (UFO) met banner About Us
+To learn more about Next.js, take a look at the following resources:
 
-### Colourfest
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
--   [ ] Ruimteschip (UFO) met banner About Us
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## site layout
+## Deploy on Vercel
 
-## Home **\*\***\_\_**\*\*** News **\*\***\_**\*\*** Socials \***\*\_\_\*\*** About
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-<div hidden><h1>Colourfest 2023 was amazing! See you next year!</h1></div>
-
-<!-- # COLOURFEST // kan eraf -->
-
-POSTER
-
----
-
-lineup
-
----
-
-Meer info
-
----
-
-PHOTOS, VIDEOS afgelopen edities
-
----
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
