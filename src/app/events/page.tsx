@@ -4,6 +4,7 @@
 import { Calendar, Navigation } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 type Event = {
@@ -132,10 +133,23 @@ export default function EventsPage() {
 							initial={{ opacity: 0, y: 12 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							className='rounded-xl border border-white/10 bg-white/5 backdrop-blur p-4 flex flex-col gap-3'>
+							className='group relative rounded-xl border border-white/10 bg-white/5 backdrop-blur p-4 flex flex-col gap-3 transition-all duration-300 hover:border-purple-400/40 hover:-translate-y-1'>
+							{/* Hover glow */}
+							<div
+								className='pointer-events-none absolute -inset-2 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300'
+								style={{
+									background: 'radial-gradient(600px circle at 50% 30%, rgba(168,85,247,0.25), transparent 40%)',
+								}}
+							/>
+
 							{e.image && <img src={e.image} className='rounded-lg object-cover' />}
 
-							<div className='font-medium text-lg'>{e.title}</div>
+							<div className='font-medium text-lg'>
+								<Link href={`/events/${e._id}`} className='group inline-flex items-center gap-1 transition-colors'>
+									<span className='group-hover:text-purple-300 transition-colors'>{e.title}</span>
+									<span className='opacity-0 group-hover:opacity-100 transition-opacity'>→</span>
+								</Link>
+							</div>
 
 							<div className='text-xs text-white/60 flex flex-wrap items-center gap-2'>
 								<span>{formatDateTime(e.date)}</span>
@@ -194,10 +208,23 @@ export default function EventsPage() {
 							initial={{ opacity: 0, y: 12 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							className='rounded-xl border border-white/10 bg-white/5 backdrop-blur p-4 flex flex-col gap-3 opacity-70'>
+							className='group relative rounded-xl border border-white/10 bg-white/5 backdrop-blur p-4 flex flex-col gap-3 transition-all duration-300 hover:border-purple-400/40 hover:-translate-y-1'>
+							{/* Hover glow */}
+							<div
+								className='pointer-events-none absolute -inset-2 rounded-xl opacity-50 hover:opacity-90 group-hover:opacity-70 transition duration-300'
+								style={{
+									background: 'radial-gradient(600px circle at 50% 30%, rgba(168,85,247,0.25), transparent 40%)',
+								}}
+							/>
+
 							{e.image && <img src={e.image} className='rounded-lg object-cover' />}
 
-							<div className='font-medium text-lg'>{e.title}</div>
+							<div className='font-medium text-lg'>
+								<Link href={`/events/${e._id}`} className='group inline-flex items-center gap-1 transition-colors'>
+									<span className='group-hover:text-purple-300 transition-colors'>{e.title}</span>
+									<span className='opacity-0 group-hover:opacity-100 transition-opacity'>→</span>
+								</Link>
+							</div>
 
 							<div className='text-xs text-white/60 flex flex-wrap items-center gap-2'>
 								<span>{formatDateTime(e.date)}</span>

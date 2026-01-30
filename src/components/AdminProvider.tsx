@@ -3,7 +3,7 @@
 
 import { createContext, useContext, useState } from 'react';
 
-type AdminView = 'users' | 'albums' | 'newsletter' | 'about' | 'events';
+type AdminView = 'users' | 'albums' | 'newsletter' | 'about' | 'events' | 'media';
 
 type AdminViewContextType = {
 	view: AdminView;

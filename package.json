@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@vercel/blob": "^2.0.1",
     "bcryptjs": "^3.0.3",
     "framer-motion": "^12.29.0",
     "lucide-react": "^0.563.0",

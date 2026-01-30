@@ -4,6 +4,7 @@
 import About from '@/components/admin/About';
 import Albums from '@/components/admin/Albums';
 import Events from '@/components/admin/Events';
+import Media from '@/components/admin/Media';
 import Users from '@/components/admin/Users';
 import { useAdminView } from '@/components/AdminProvider';
 import { useSession } from 'next-auth/react';
@@ -24,6 +25,7 @@ function AdminContent() {
 	if (view === 'albums') return <Albums />;
 	if (view === 'about') return <About />;
 	if (view === 'events') return <Events />;
+	if (view === 'media') return <Media />;
 	if (view === 'newsletter') return <NewsletterPanel />;
 
 	return <div className='text-white/40 text-sm'>Select a panel from the sidebar.</div>;

@@ -1,15 +1,23 @@
 /** @format */
 
 import { Event } from '@/models/Event';
+import Media from '@/models/Media';
 import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongoose';
 
 export async function GET() {
 	await connectDB();
 
-	const events = await Event.find().sort({
-		date: -1,
-	});
+	const events = await Event.find()
+		.sort({
+			date: -1,
+		})
+		.lean();
+
+	for (const event of events) {
+		const media = await Media.find({ eventId: event._id, approved: true });
+		event.media = media || [];
+	}
 
 	return NextResponse.json({ events });
 }

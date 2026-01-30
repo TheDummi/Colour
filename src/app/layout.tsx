@@ -3,6 +3,7 @@
 import './globals.css';
 
 import { AdminProvider } from '@/components/AdminProvider';
+import CursorTrail from '@/components/CursorTrail';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import type { Metadata } from 'next';
@@ -13,12 +14,29 @@ import { SidebarProvider } from '@/components/SidebarProvider';
 import SpaceshipPromo from '@/components/Spaceship';
 import Starfield from '@/components/StarField';
 
-export const metadata: Metadata = {
+/** @format */
+
+const about = {
 	title: 'Colour',
-	description: 'Colour, the one and only.',
+	description: 'The one and only.',
 };
 
-export default function RootLayout({
+export const metadata: Metadata = {
+	...about,
+	icons: {
+		icon: '/colour_logo.svg',
+	},
+	openGraph: {
+		...about,
+		images: ['/colour_logo.svg'],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		...about,
+	},
+};
+
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
@@ -32,6 +50,8 @@ export default function RootLayout({
 							<PlayerProvider>
 								<Starfield />
 								<SpaceshipPromo />
+								<CursorTrail />
+
 								<Header />
 
 								<main className='min-h-screen flex-1 px-4 sm:px-8 py-10'>

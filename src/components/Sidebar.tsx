@@ -2,7 +2,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { Calendar, Home, LogIn, LogOut, Music, Newspaper, Shield, Users } from 'lucide-react';
+import { Calendar, Camera, Home, LogIn, LogOut, Music, Newspaper, Shield, Users } from 'lucide-react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 import Link from 'next/link';
@@ -53,6 +53,7 @@ export default function Sidebar() {
 								<Calendar size={16} />
 								Events
 							</Link>
+
 							<Link href='/colourfest' className='flex gap-2' onClick={closeSidebar}>
 								<Music size={16} />
 								Colourfest
@@ -105,6 +106,15 @@ export default function Sidebar() {
 									className='flex items-center gap-2 text-left hover:text-white/90'>
 									<Calendar size={16} />
 									Events
+								</button>
+								<button
+									onClick={() => {
+										setView('media');
+										closeSidebar();
+									}}
+									className='flex items-center gap-2 text-left hover:text-white/90'>
+									<Camera size={16} />
+									Media
 								</button>
 
 								<button

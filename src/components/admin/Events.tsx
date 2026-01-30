@@ -1,6 +1,7 @@
 /** @format */
 'use client';
 
+import { Camera, Download, Edit, Trash } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 type Event = {
@@ -11,10 +12,16 @@ type Event = {
 	date: string;
 	link: string;
 	image: string;
+	media?: MediaItem[];
 };
 
 type PlaceResult = {
 	display_name: string;
+};
+
+type MediaItem = {
+	_id: string;
+	blobUrl: string;
 };
 
 export default function Events() {
@@ -27,6 +34,8 @@ export default function Events() {
 	const [suggestions, setSuggestions] = useState<PlaceResult[]>([]);
 	const [loadingPlaces, setLoadingPlaces] = useState(false);
 
+	const [openGallery, setOpenGallery] = useState<string | null>(null);
+
 	const empty: Event = {
 		_id: '',
 		title: '',
@@ -35,6 +44,7 @@ export default function Events() {
 		date: '',
 		link: '',
 		image: '',
+		media: [],
 	};
 
 	useEffect(() => {
@@ -44,6 +54,7 @@ export default function Events() {
 	const load = async () => {
 		const res = await fetch('/api/events');
 		const data = await res.json();
+
 		setEvents(data.events ?? []);
 		setLoading(false);
 	};
@@ -55,6 +66,8 @@ export default function Events() {
 			...editing,
 			id: editing._id || undefined,
 		};
+
+		delete editing.media;
 
 		await fetch('/api/events', {
 			method: editing._id ? 'PATCH' : 'POST',
@@ -76,7 +89,7 @@ export default function Events() {
 	};
 
 	useEffect(() => {
-		if (!locationQuery || locationQuery.length < 3) {
+		if (!locationQuery || locationQuery?.length < 3) {
 			setSuggestions([]);
 			return;
 		}
@@ -113,27 +126,6 @@ export default function Events() {
 				<button onClick={() => setEditing({ ...empty })} className='rounded-lg bg-white/10 hover:bg-white/20 px-4 py-2 text-sm'>
 					Add event
 				</button>
-			</div>
-
-			<div className='flex flex-col gap-3'>
-				{events.map((e) => (
-					<div key={e._id} className='flex items-center justify-between rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm'>
-						<div>
-							<div className='font-medium'>{e.title}</div>
-							<div className='text-xs text-white/50'>{new Date(e.date).toLocaleDateString()}</div>
-						</div>
-
-						<div className='flex gap-3'>
-							<button onClick={() => setEditing(e)} className='text-xs hover:text-white'>
-								Edit
-							</button>
-
-							<button onClick={() => remove(e._id)} className='text-xs text-red-400 hover:text-red-300'>
-								Delete
-							</button>
-						</div>
-					</div>
-				))}
 			</div>
 
 			{/* Editor */}
@@ -181,7 +173,7 @@ export default function Events() {
 						/>
 
 						{/* Suggestions dropdown */}
-						{suggestions.length > 0 && (
+						{suggestions?.length > 0 && (
 							<div className='absolute z-50 mt-1 w-full rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-lg overflow-hidden'>
 								{suggestions.map((place, i) => (
 									<button
@@ -255,6 +247,99 @@ export default function Events() {
 					</div>
 				</div>
 			)}
+
+			<div className='flex flex-col gap-3'>
+				{events.map((e) => (
+					<div key={e._id} className='flex items-center rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm'>
+						<div className='w-full'>
+							<div className='flex justify-between p-2'>
+								<div>
+									<div className='font-medium'>{e.title}</div>
+									<div className='text-xs text-white/50'>{new Date(e.date).toLocaleDateString()}</div>
+								</div>
+
+								<div className='flex gap-3'>
+									<button
+										onClick={() => {
+											setEditing(e);
+											setLocationQuery(e.location || '');
+										}}
+										className='text-xs hover:text-white'>
+										<Edit size={14} />
+									</button>
+
+									<button
+										onClick={() => {
+											if (!e.media || e.media.length === 0) return;
+											setOpenGallery(openGallery === e._id ? null : e._id);
+										}}
+										disabled={!e.media || e.media.length === 0}
+										className={`text-xs transition ${!e.media || e.media.length === 0 ? 'text-white/30 cursor-not-allowed' : 'text-white/60 hover:text-white'}`}>
+										<Camera size={14} />
+									</button>
+
+									<button onClick={() => remove(e._id)} className='text-xs text-red-400 hover:text-red-300'>
+										<Trash size={14} />
+									</button>
+								</div>
+							</div>
+							{openGallery === e._id && (
+								<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3'>
+									{e.media?.length === 0 && <div className='text-xs text-white/40 col-span-full'>No images for this event.</div>}
+
+									{e.media?.map((img) => (
+										<div key={img._id} className='flex items-center gap-3 rounded bg-white/5 p-2'>
+											{/* Thumbnail */}
+											<img src={img.blobUrl} className='h-12 w-12 rounded object-cover shrink-0' />
+
+											{/* Title / identifier */}
+											<div className='flex-1 min-w-0'>
+												<span className='block text-xs text-white/60 truncate'>{img._id}</span>
+											</div>
+
+											{/* Actions */}
+											<div className='flex gap-2'>
+												<button
+													className='text-white/60 hover:text-white hover:cursor-pointer'
+													title='Download image'
+													onClick={async () => {
+														const res = await fetch(img.blobUrl);
+														if (!res.ok) throw new Error('Download failed');
+														const blob = await res.blob();
+														const url = URL.createObjectURL(blob);
+
+														const a = document.createElement('a');
+														a.href = url;
+														a.download = `image-${img._id}`;
+														document.body.appendChild(a);
+														a.click();
+														a.remove();
+
+														URL.revokeObjectURL(url);
+													}}>
+													<Download size={14} />
+												</button>
+
+												<button
+													onClick={async () => {
+														await fetch(`/api/media/${img._id}`, {
+															method: 'DELETE',
+														});
+														load();
+													}}
+													className='text-red-400 hover:text-red-300'
+													title='Delete image'>
+													<Trash size={14} />
+												</button>
+											</div>
+										</div>
+									))}
+								</div>
+							)}
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }

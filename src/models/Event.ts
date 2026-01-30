@@ -9,6 +9,7 @@ export type EventDoc = mongoose.Document & {
 	date: string;
 	link: string;
 	image: string;
+	media: object[] | null;
 };
 
 const EventSchema = new Schema<EventDoc>(
@@ -19,6 +20,7 @@ const EventSchema = new Schema<EventDoc>(
 		date: { type: String, required: true }, // ISO string
 		link: { type: String, default: '' },
 		image: { type: String, default: '' },
+		media: { type: Array, default: null, required: false },
 	},
 	{
 		timestamps: true,
